@@ -1,0 +1,39 @@
+{% extends "main/components/base.html" %}
+{% block title %}
+home
+{% endblock title %}
+
+{%block content%}
+<div class="container">
+    {% for post in posts %}
+    <div class="row g-2">
+        <div class="card-body bg-light">
+            <div class="row">
+                <div class="col-2">
+                    <img src="{{post.author.photo.url}}" alt="user photo" class="img-fluid rounded-circle" style="width: 60px; height: 60px;">
+                    <h5>{{ post.author.user.username }}</h5>
+                </div>
+            </div>
+            <p>{{ post.content }}</p>
+            {% if post.photo %}
+            <div class="row d-flex justify-content-center w-auto h-auto">
+                <img src="{{post.photo.url}}" alt="photo" style="width: 500px; height: 500px;">
+            </div>
+            {% endif %}
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-6">
+                    <a href="#" class="btn btn-primary">Like</a>
+                    <a href="{% url 'comments' post.id%}" class="btn btn-primary">Comment</a>
+                </div>
+                
+                <!-- <div class="col-6">
+                    <p>{{ post.likes.count }} likes</p>
+                    <p>{{ post.comments.count }} comments</p>
+                </div> -->
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}

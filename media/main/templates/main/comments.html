@@ -1,0 +1,23 @@
+{% extends "main/components/base.html" %}
+{% block title %}
+    Comments
+{% endblock title %}
+{% block content %}
+    <div class="container">
+        {% for comment in comments %}
+            <div class="row g-1">
+                <div class="card-header">
+                    <div class="rwo">
+                        <div class="col">
+                            <img src="{{comment.author.photo.url}}" alt="user photo" class="img-fluid rounded-circle" style="width: 60px; height: 60px;">
+                            <h5>{{ comment.author.user.username }}</h5>
+                        </div>
+                    </div>
+                </div>
+                    <div class="card-text">
+                        <p>{{ comment.content }}</p>
+                    </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

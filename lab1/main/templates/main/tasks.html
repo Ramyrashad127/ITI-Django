@@ -1,0 +1,21 @@
+{% extends "main/base.html" %}
+{%block title%}
+tasks
+{%endblock%}
+
+{% block content %}
+<div class="row">
+    <div class="col">title</div>
+    <div class="col">description</div>
+    <div class="col">statous</div>
+    <div class="col">priority</div>
+</div>
+{% for task in tasks %}
+    <div class="row bg-light-subtle">
+        <div class="col">{{task.title}}</div>
+        <div class="col">{{task.description}}</div>
+        <div class="col">{{task.statous}}</div>
+        <div class="col">{{task.priority}}</div>
+    </div>
+{% endfor %}
+{% endblock %}
